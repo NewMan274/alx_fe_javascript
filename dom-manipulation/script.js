@@ -4,20 +4,20 @@ const quoteText = document.getElementById("newQuoteText");
 const quoteCategory = document.getElementById("newQuoteCategory");
 
 let quoteArray = [
-  {quote: "I am strong!", category: "motivational"},
-  {quote: "We live to die", category: "unknown"},
-  {quote: "This is a quote", category: "new"},
-  {quote: "olamide baddo", category: "ybnl"},
-  {quote: "ololade mi asake", category: "giran"},
-  {quote: "work your vision to reality", category: "old"},
-  {quote: "the end is near", category: "scary"},
+  {text: "I am strong!", category: "motivational"},
+  {text: "We live to die", category: "unknown"},
+  {text: "This is a text", category: "new"},
+  {text: "olamide baddo", category: "ybnl"},
+  {text: "ololade mi asake", category: "giran"},
+  {text: "work your vision to reality", category: "old"},
+  {text: "the end is near", category: "scary"},
 ];
 
 function showRandomQuote() {
   const choosenQuote = quoteArray[Math.floor(Math.random() * quoteArray.length)];
 
   display.innerHTML = `
-    <p><strong>${choosenQuote.quote}</strong></p>
+    <p><strong>${choosenQuote.text}</strong></p>
     <p>Category: ${choosenQuote.category}</p>
   `;
 }
@@ -28,9 +28,9 @@ function addQuote() {
   const newQuote = quoteText.value.trim();
   const newCategory = quoteCategory.value.trim();
 
-  let quoteCreated = {quote:"", category:""}
+  let quoteCreated = {text:"", category:""}
 
-  quoteCreated.quote = newQuote;
+  quoteCreated.text = newQuote;
   quoteCreated.category = newCategory;
 
   quoteArray.push(quoteCreated);
