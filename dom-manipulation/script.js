@@ -31,6 +31,7 @@ function createAddQuoteForm() {
     <input placeholder="Enter a new quote" />
     <input placeholder="Enter a quote category" />
   `
+  appendChild()
 }
 
 function addQuote() {
