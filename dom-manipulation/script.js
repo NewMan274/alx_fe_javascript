@@ -24,6 +24,15 @@ function showRandomQuote() {
 
 addQuoteBtn.addEventListener("click", showRandomQuote);
 
+function createAddQuoteForm() {
+  let magic = document.createElement("div")
+
+  magic.innerHTML = `
+    <input placeholder="Enter a new quote" />
+    <input placeholder="Enter a quote category" />
+  `
+}
+
 function addQuote() {
   const newQuote = quoteText.value.trim();
   const newCategory = quoteCategory.value.trim();
@@ -38,3 +47,5 @@ function addQuote() {
   quoteText.value = "";
   quoteCategory.value = "";
 }
+
+createAddQuoteForm();
