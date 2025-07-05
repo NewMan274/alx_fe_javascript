@@ -152,7 +152,7 @@ async function fetchQuotesFromServer() {
     const serverQuotes = await response.json();
 
     // Simulate conflict resolution: server data takes precedence
-    syncWithServer(serverQuotes.slice(0, 10));// Slice to simulate limited real data
+    syncQuotes(serverQuotes.slice(0, 10));// Slice to simulate limited real data
   } catch (error) {
     console.error("Failed to fetch server quotes:", error);
   }
@@ -174,7 +174,7 @@ async function sendQuoteToServer(quote) {
 }
 
 // Sync with server
-function syncWithServer(serverQuotes) {
+function syncQuotes(serverQuotes) {
   let conflictDetected = false;
 
   serverQuotes.forEach(serverQuote => {
