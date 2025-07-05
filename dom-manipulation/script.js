@@ -51,6 +51,7 @@ function addQuote() {
 
   quoteArray.push(quoteCreated);
   saveQuotes();
+  sendQuoteToServer(quoteCreated); // Sync to server
 
   quoteText.value = "";
   quoteCategory.value = "";
@@ -141,3 +142,60 @@ function filterQuotes() {
     display.appendChild(quoteElement);
   });
 };
+
+const serverUrl = "https://jsonplaceholder.typicode.com/posts";
+
+// Fetch server quotes
+async function fetchQuotesFromServer() {
+  try {
+    const response = await fetch(serverUrl);
+    const serverQuotes = await response.json();
+
+    // Simulate conflict resolution: server data takes precedence
+    syncWithServer(serverQuotes.slice(0, 10));// Slice to simulate limited real data
+  } catch (error) {
+    console.error("Failed to fetch server quotes:", error);
+  }
+}
+
+// Send new quote to server
+async function sendQuoteToServer(quote) {
+  try {
+    const response = await fetch(serverUrl, {
+      method: "POST",
+      body: JSON.stringify(quote),
+      headers: {"Content-type": "application/json; charset=UTF-8"}
+    });
+    const data = await response.json();
+    console.log("Quote synced to server:", data);
+  } catch (error) {
+    console.error("Failed to sync quote:", error);
+  }
+}
+
+// Sync with server
+function syncWithServer(serverQuotes) {
+  let conflictDetected = false;
+
+  serverQuotes.forEach(serverQuote => {
+    const existsLocally = quoteArray.some(localQuote => localQuote.text === serverQuote.title && localQuote.category);
+
+    if (!existsLocally) {
+      quoteArray.push({
+        text: serverQuote.title,
+        category: "server"
+      });
+      conflictDetected = true;
+    }
+  });
+
+  if (conflictDetected) {
+    saveQuotes();
+    populateCategories();
+    filterQuotes();
+    alert("New quotes were fetched and added to your list from the server.")
+  }
+}
+
+setInterval(fetchQuotesFromServer, 30000);
+fetchQuotesFromServer();
