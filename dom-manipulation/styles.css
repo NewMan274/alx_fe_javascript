@@ -1,0 +1,81 @@
+body {
+  display: grid;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-items: center;
+  padding-top: 10px;
+  background-color: rgba(153, 168, 183, 0.409);
+}
+
+p, input, button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Merriweather', serif;
+}
+
+.quoteDisplay {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  border: 2.4px solid rgb(134, 38, 17);
+  border-style: inset;
+  border-left: 1.2px solid rgb(134, 38, 17);
+  border-top: 1.2px solid rgb(134, 38, 17);
+  border-radius: 25%;
+  width: 30%;
+}
+
+.displayBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.displayBtns button {
+  color: white;
+  background-color: cadetblue;
+  padding: 10px;
+  border-radius: 25%;
+}
+
+.displayBtns select {
+  padding: 4px;
+  text-align: center;
+  border-radius: 10%;
+  width: 120px;
+  align-self: center;
+  background-color: azure;
+}
+
+.createQuote {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 15px;
+}
+
+.newQuote {
+  height: 50px;
+  width: 300px;
+}
+
+.newCatte {
+  height: 25px;
+  width: 300px;
+}
+
+.createQuote button {
+  width: 100px;
+  align-self: center;
+  padding: 3px;
+  background-color: rgb(240, 238, 234);
+  border-radius: 15%;
+}
+
+.portBtns {
+  padding-top: 50px;
+}

@@ -12,9 +12,10 @@ const defaultArray = [
   {text: "We live to die", category: "unknown"},
   {text: "This is a quote", category: "new"},
   {text: "olamide baddo", category: "ybnl"},
+  {text: "do the hard thing!", category: "alx"},
   {text: "ololade mi asake", category: "giran"},
   {text: "work your vision to reality", category: "old"},
-  {text: "the end is near", category: "scary"},
+  {text: "the end is near!!", category: "scary"},
 ];
 
 let quoteArray = JSON.parse(localStorage.getItem("quotes")) || defaultArray;
@@ -80,16 +81,16 @@ function exportToJsonFile() {
   document.body.removeChild(downloadLink);
 }
 
-function importFromJsonFile(event) {
-  const fileReader = new FileReader();
-  fileReader.onload = function(event) {
-    const importedQuotes = JSON.parse(event.target.result);
-    quotes.push(...importedQuotes);
-    saveQuotes();
-    alert('Quotes imported successfully!');
-  };
-  fileReader.readAsText(event.target.files[0]);
-}
+  function importFromJsonFile(event) {
+    const fileReader = new FileReader();
+    fileReader.onload = function(event) {
+      const importedQuotes = JSON.parse(event.target.result);
+      quotes.push(...importedQuotes);
+      saveQuotes();
+      alert('Quotes imported successfully!');
+    };
+    fileReader.readAsText(event.target.files[0]);
+  }
 
 exportBtn.addEventListener("click", exportToJsonFile);
 importInput.addEventListener("change", importFromJsonFile);
@@ -199,5 +200,3 @@ function syncQuotes(serverQuotes) {
 
 setInterval(fetchQuotesFromServer, 30000);
 fetchQuotesFromServer();
-
-"Quotes synced with server!"
