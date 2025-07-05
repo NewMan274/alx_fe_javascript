@@ -199,3 +199,5 @@ function syncQuotes(serverQuotes) {
 
 setInterval(fetchQuotesFromServer, 30000);
 fetchQuotesFromServer();
+
+"Quotes synced with server!"
