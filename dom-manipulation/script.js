@@ -164,7 +164,7 @@ async function sendQuoteToServer(quote) {
     const response = await fetch(serverUrl, {
       method: "POST",
       body: JSON.stringify(quote),
-      headers: {"Content-type": "application/json; charset=UTF-8"}
+      headers: {"Content-Type": "application/json; charset=UTF-8"}
     });
     const data = await response.json();
     console.log("Quote synced to server:", data);
